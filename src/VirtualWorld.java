@@ -102,8 +102,12 @@ public final class VirtualWorld extends PApplet
 
     public void mousePressed()
     {
-        this.view.shiftView(0 , 1);
+        ImageStore imst = new ImageStore(Functions.getImageList(imageStore , "tsunami").get(0));
+        Background tsunami = new Background("tsunami" , imst.defaultImages);
+        world.setBackground(new Point(mouseX / TILE_WIDTH , mouseY / TILE_HEIGHT) , tsunami);
     }
+
+
 
     public static Background createDefaultBackground(ImageStore imageStore) {
         return new Background(DEFAULT_IMAGE_NAME,

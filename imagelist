@@ -28,4 +28,5 @@ grass images/grass.bmp
 rocks images/rock.bmp
 dirt images/dirt.bmp
 vein images/vein.bmp
+tsunami images/tsunami.bmp 255 255 255
 background_default images/none.bmp
