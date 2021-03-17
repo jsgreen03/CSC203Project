@@ -1,32 +1,52 @@
-blacksmith images/blacksmith.bmp 255 255 255 0
-blob images/blob1.bmp 255 255 255 0
-blob images/blob2.bmp 255 255 255 0
-blob images/blob3.bmp 255 255 255 0
-blob images/blob4.bmp 255 255 255 0
-blob images/blob5.bmp 255 255 255 0
-blob images/blob6.bmp 255 255 255 0
-blob images/blob7.bmp 255 255 255 0
-blob images/blob8.bmp 255 255 255 0
-blob images/blob9.bmp 255 255 255 0
-blob images/blob10.bmp 255 255 255 0
-blob images/blob11.bmp 255 255 255 0
-blob images/blob12.bmp 255 255 255 0
-miner images/miner1.bmp 252 252 252 0
-miner images/miner2.bmp 252 252 252 0
-miner images/miner3.bmp 252 252 252 0
-miner images/miner4.bmp 252 252 252 0
-miner images/miner5.bmp 252 252 252 0
+blacksmith images/sandcastle.bmp 255 255 255 0
+blob images/seagull1.bmp 252 252 252 0
+blob images/seagull2.bmp 252 252 252 0
+blob images/seagull3.bmp 252 252 252 0
+blob images/seagull4.bmp 252 252 252 0
+miner images/crab1.bmp 252 252 252 0
+miner images/crab2.bmp 252 252 252 0
+miner images/crab3.bmp 252 252 252 0
+miner images/crab4.bmp 252 252 252 0
+miner images/crab5.bmp 252 252 252 0
+miner images/crab6.bmp 252 252 252 0
 quake images/quake1.bmp 255 255 255 0
 quake images/quake2.bmp 255 255 255 0
 quake images/quake3.bmp 255 255 255 0
 quake images/quake4.bmp 255 255 255 0
 quake images/quake5.bmp 255 255 255 0
 quake images/quake6.bmp 255 255 255 0
-ore images/ore.bmp 201 26 26 0
+ore images/seashell.bmp 201 26 26 0
 obstacle images/obstacle.bmp
-grass images/grass.bmp
+grass images/sand.bmp
 rocks images/rock.bmp
 dirt images/dirt.bmp
-vein images/vein.bmp
-tsunami images/tsunami.bmp 255 255 255
+vein images/seaweed.bmp
 background_default images/none.bmp
+crab images/crab1.bmp 252 252 252 0
+crab images/crab2.bmp 252 252 252 0
+crab images/crab3.bmp 252 252 252 0
+crab images/crab4.bmp 252 252 252 0
+crab images/crab5.bmp 252 252 252 0
+crab images/crab6.bmp 252 252 252 0
+seagull images/seagull1.bmp 252 252 252 0
+seagull images/seagull2.bmp 252 252 252 0
+seagull images/seagull3.bmp 252 252 252 0
+seagull images/seagull4.bmp 252 252 252 0
+seal images/seal1.bmp 252 252 252 0
+seal images/seal2.bmp 252 252 252 0
+seal images/seal3.bmp 252 252 252 0
+seal images/seal4.bmp 252 252 252 0
+seal images/seal5.bmp 252 252 252 0
+seal images/seal6.bmp 252 252 252 0
+seal images/seal7.bmp 252 252 252 0
+seal images/seal9.bmp 252 252 252 0
+seal images/seal10.bmp 252 252 252 0
+seal images/seal11.bmp 252 252 252 0
+seal images/seal12.bmp 252 252 252 0
+seashell images/seashell.bmp 255 255 255 0
+seaweed images/seaweed.bmp 255 255 255 0
+tsunami images/tsunami.bmp 255 255 255 0
+walkingfish images/walkingfish1.bmp 252 252 252 0
+walkingfish images/walkingfish2.bmp 252 252 252 0
+walkingfish images/walkingfish3.bmp 252 252 252 0
+sand images/sand.bmp
