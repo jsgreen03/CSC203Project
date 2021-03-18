@@ -33,6 +33,9 @@ public final class VirtualWorld extends PApplet
     public static final double FASTER_SCALE = 0.25;
     public static final double FASTEST_SCALE = 0.10;
 
+    private static final int SEAL_ACTION_PERIOD = 2;
+    private static final int SEAL_ANIMATION_PERIOD = 2;
+
     public static double timeScale = 1.0;
 
     public ImageStore imageStore;
@@ -105,6 +108,8 @@ public final class VirtualWorld extends PApplet
         ImageStore imst = new ImageStore(Functions.getImageList(imageStore , "tsunami").get(0));
         Background tsunami = new Background("tsunami" , imst.defaultImages);
         world.setBackground(new Point(mouseX / TILE_WIDTH , mouseY / TILE_HEIGHT) , tsunami);
+        Point mouse = new Point(mouseX / TILE_WIDTH , mouseY / TILE_HEIGHT);
+        makeNewSeal(mouse);
     }
 
 
@@ -178,5 +183,15 @@ public final class VirtualWorld extends PApplet
     public static void main(String[] args) {
         parseCommandLine(args);
         PApplet.main(VirtualWorld.class);
+    }
+
+    private void makeNewSeal(Point mouse) {
+        long nextPeriod = SEAL_ACTION_PERIOD;
+
+        AnimationEntity soldier = Factory.createSeal("seal",mouse,imageStore.images.get("seal"), SEAL_ACTION_PERIOD, SEAL_ANIMATION_PERIOD);
+
+        world.addEntity(soldier);
+        nextPeriod += SEAL_ACTION_PERIOD;
+        soldier.scheduleActions(scheduler, world, imageStore);
     }
 }

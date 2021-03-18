@@ -3,16 +3,23 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class MinerFull extends Miner{
+public class WalkingFish extends Miner {
 
-    public MinerFull(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod)
-    {
-        super(id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod);
+    private Miner oldMiner;
+
+    private PathingStrategy strategy = new SingleStepPathingStrategy();
+
+    public WalkingFish(String id, Point position,
+                     List<PImage> images,
+                     int actionPeriod, int animationPeriod, Miner oldMiner) {
+        super(id, position, images, 0, 0, actionPeriod, animationPeriod);
+
+        this.oldMiner = oldMiner;
     }
 
     public void executeActivity(WorldModel world,
-            ImageStore imageStore,
-            EventScheduler scheduler)
+                                ImageStore imageStore,
+                                EventScheduler scheduler)
     {
         Entity blacksmith = new Blacksmith(getId(), getPosition(), getImages());
         Optional<Entity> fullTarget =

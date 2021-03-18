@@ -73,4 +73,8 @@ public class Factory {
         return new Animation( entity, null, null, repeatCount);
     }
 
+    public static Seal createSeal(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod) {
+        return new Seal(id, position, images, actionPeriod, animationPeriod);
+    }
+
 }

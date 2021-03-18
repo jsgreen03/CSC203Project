@@ -28,6 +28,9 @@ public class Activity extends Action {
         else if(getEntity() instanceof Vein) {
             ((Vein)(getEntity())).executeActivity(getWorld(), getImageStore(), scheduler);
         }
+        else if(getEntity() instanceof Seal){
+            ((Seal)(getEntity())).executeActivity(getWorld(), getImageStore(), scheduler);
+        }
         else{
             throw new UnsupportedOperationException(String.format(
                     "executeActivityAction not supported for %s",
