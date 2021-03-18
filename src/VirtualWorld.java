@@ -33,6 +33,9 @@ public final class VirtualWorld extends PApplet
     public static final double FASTER_SCALE = 0.25;
     public static final double FASTEST_SCALE = 0.10;
 
+    private static final int SEAL_ACTION_PERIOD = 2;
+    private static final int SEAL_ANIMATION_PERIOD = 2;
+
     public static double timeScale = 1.0;
 
     private int shiftX = 0;
@@ -193,5 +196,15 @@ public final class VirtualWorld extends PApplet
     public static void main(String[] args) {
         parseCommandLine(args);
         PApplet.main(VirtualWorld.class);
+    }
+
+    private void makeNewSeal(Point mouse) {
+        long nextPeriod = SEAL_ACTION_PERIOD;
+
+        AnimationEntity soldier = Factory.createSeal("seal",mouse,imageStore.images.get("seal"), SEAL_ACTION_PERIOD, SEAL_ANIMATION_PERIOD);
+
+        world.addEntity(soldier);
+        nextPeriod += SEAL_ACTION_PERIOD;
+        soldier.scheduleActions(scheduler, world, imageStore);
     }
 }

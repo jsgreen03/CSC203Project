@@ -23,7 +23,6 @@ dirt images/dirt.bmp
 vein images/seaweed.bmp 246 246 246 0
 background_default images/none.bmp
 tsunami images/tsunami.bmp 0 0 0 0
-
 crab images/crab1.bmp 252 252 252 0
 crab images/crab2.bmp 252 252 252 0
 crab images/crab3.bmp 252 252 252 0
@@ -34,17 +33,17 @@ seagull images/seagull1.bmp 4 4 4 0
 seagull images/seagull2.bmp 4 4 4 0
 seagull images/seagull3.bmp 4 4 4 0
 seagull images/seagull4.bmp 4 4 4 0
-seal images/seal1.bmp 252 252 252 0
-seal images/seal2.bmp 252 252 252 0
-seal images/seal3.bmp 252 252 252 0
-seal images/seal4.bmp 252 252 252 0
-seal images/seal5.bmp 252 252 252 0
-seal images/seal6.bmp 252 252 252 0
-seal images/seal7.bmp 252 252 252 0
-seal images/seal9.bmp 252 252 252 0
-seal images/seal10.bmp 252 252 252 0
-seal images/seal11.bmp 252 252 252 0
-seal images/seal12.bmp 252 252 252 0
+seal images/seal1.bmp 254 226 176 0
+seal images/seal2.bmp 254 226 176 0
+seal images/seal3.bmp 254 226 176 0
+seal images/seal4.bmp 254 226 176 0
+seal images/seal5.bmp 254 226 176 0
+seal images/seal6.bmp 254 226 176 0
+seal images/seal7.bmp 254 226 176 0
+seal images/seal9.bmp 254 226 176 0
+seal images/seal10.bmp 254 226 176 0
+seal images/seal11.bmp 254 226 176 0
+seal images/seal12.bmp 254 226 176 0
 walkingfish images/walkingfish1.bmp 252 252 252 0
 walkingfish images/walkingfish2.bmp 252 252 252 0
 walkingfish images/walkingfish3.bmp 252 252 252 0
