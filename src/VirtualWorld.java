@@ -120,7 +120,7 @@ public final class VirtualWorld extends PApplet
             if (world.withinBounds(p))
             {
                 world.setBackground(p, tsunami);
-                world.setOccupancyCell(p, new Obstacle("tsunami: " + p.toString(), p, null));
+                world.setOccupancyCell(p, new Obstacle("tsunami", p, null));
             }
         }
         makeNewSeal(new Point((mouseX / TILE_WIDTH) + shiftX  , (mouseY / TILE_HEIGHT) + shiftY ));

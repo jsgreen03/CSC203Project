@@ -77,4 +77,7 @@ public class Factory {
         return new Seal(id, position, images, actionPeriod, animationPeriod);
     }
 
+    public static WalkingFish createWalkingFish(String id , Point position , List<PImage> images , int actionPeriod , int animationPeriod)
+    {return new WalkingFish(id , position , images , actionPeriod , animationPeriod);}
+
 }

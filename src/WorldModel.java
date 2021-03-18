@@ -105,6 +105,7 @@ public final class WorldModel
     }
 
     public Entity getOccupancyCell(Point pos) {
+
         return this.occupancy[pos.y][pos.x];
     }
 

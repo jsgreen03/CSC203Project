@@ -3,18 +3,14 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class WalkingFish extends Miner {
+public class WalkingFish extends AnimationEntity {
 
-    private Miner oldMiner;
-
-    private PathingStrategy strategy = new SingleStepPathingStrategy();
+    private PathingStrategy strategy = new AStarPathingStrategy();
 
     public WalkingFish(String id, Point position,
                      List<PImage> images,
-                     int actionPeriod, int animationPeriod, Miner oldMiner) {
-        super(id, position, images, 0, 0, actionPeriod, animationPeriod);
-
-        this.oldMiner = oldMiner;
+                     int actionPeriod, int animationPeriod) {
+        super(id, position, images, actionPeriod, animationPeriod);
     }
 
     public void executeActivity(WorldModel world,
@@ -28,7 +24,7 @@ public class WalkingFish extends Miner {
         if (fullTarget.isPresent() && moveTo( this, world,
                 fullTarget.get(), scheduler))
         {
-            this.transform( world, scheduler, imageStore);
+            this.transform(world, scheduler, imageStore);
         }
         else {
             scheduler.scheduleEvent(this,
@@ -37,30 +33,16 @@ public class WalkingFish extends Miner {
         }
     }
 
-    public boolean transform(
-            WorldModel world,
-            EventScheduler scheduler,
-            ImageStore imageStore)
+
+    private Point nextPosition(WorldModel world, Point destPos)
     {
-        if (getResourceCount() >= getResourceLimit()) {
-
-            MinerNotFull miner = Factory.createMinerNotFull(getId(), getResourceLimit(),
-                    getPosition(), getActionPeriod(),
-                    getAnimationPeriod(),
-                    getImages());
-
-            world.removeEntity(this);
-            scheduler.unscheduleAllEvents(this);
-
-            world.addEntity(miner);
-            miner.scheduleActions( scheduler, world, imageStore);
-
-            return true;
+        List<Point> pts = strategy.computePath(getPosition(), destPos, pt -> world.withinBounds(pt) && !world.isOccupied(pt), (pt1, pt2) -> withinReach(pt1, pt2), PathingStrategy.CARDINAL_NEIGHBORS);
+        if(pts.isEmpty())
+        {
+            return getPosition();
         }
-
-        return false;
+        return pts.get(0);
     }
-
 
     public boolean moveTo(
             Entity miner,
@@ -84,6 +66,48 @@ public class WalkingFish extends Miner {
             }
             return false;
         }
+    }
+
+    private boolean transform(WorldModel world, EventScheduler scheduler, ImageStore imageStore)
+    {
+        if (nextToBlacksmith(world))
+        {
+            OreBlob oreBlob = Factory.createOreBlob(getId(),
+                    getPosition() , getActionPeriod(),
+                    getAnimationPeriod() , getImages()
+            );
+
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
+
+            world.addEntity(oreBlob);
+            oreBlob.scheduleActions(scheduler, world, imageStore);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean nextToBlacksmith(WorldModel world)
+    {
+        Point pos = getPosition();
+        Point[] adjacent = new Point[] {new Point( pos.x + 1 , pos.y) , new Point(pos.x - 1 , pos.y) , new Point(pos.x , pos.y + 1) , new Point(pos.x , pos.y - 1)};
+        for (Point p : adjacent)
+        {
+            if (!(world.getOccupancyCell(p) == null) && world.getOccupancyCell(p).getClass().equals(Blacksmith.class))
+                return true;
+        }
+        return false;
+    }
+
+    private static boolean withinReach(Point pt1, Point pt2) {
+        // checks if destination has been reached by moving to neighbors
+        boolean n1 = (pt1.x + 1 == pt2.x && pt1.y == pt2.y);
+        boolean n2 = (pt1.x - 1 == pt2.x && pt1.y == pt2.y);
+        boolean n3 = (pt1.x == pt2.x && pt1.y + 1 == pt2.y);
+        boolean n4 = (pt1.x == pt2.x && pt1.y -1 == pt2.y);
+        return n1 || n2 || n3 || n4;
     }
 
 }

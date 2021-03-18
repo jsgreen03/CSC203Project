@@ -38,6 +38,11 @@ public class OreBlob extends AnimationEntity{
         if (blobTarget.isPresent()) {
             Point tgtPos = blobTarget.get().getPosition();
 
+            if (nextToTsunami(world))
+                transform(world, scheduler, imageStore);
+
+            else
+                {
             if (this.moveTo( this, world, blobTarget.get(), scheduler)) {
                 Quake quake = Factory.createQuake(tgtPos,
                         Functions.getImageList(imageStore, QUAKE_KEY));
@@ -46,6 +51,7 @@ public class OreBlob extends AnimationEntity{
                 nextPeriod += this.getActionPeriod();
                 quake.scheduleActions(scheduler, world, imageStore);
             }
+                }
         }
 
         scheduler.scheduleEvent( this,
@@ -100,6 +106,34 @@ public class OreBlob extends AnimationEntity{
         return n1 || n2 || n3 || n4;
     }
 
+    private boolean transform(WorldModel world, EventScheduler scheduler, ImageStore imageStore)
+    {
+
+            WalkingFish fish = Factory.createWalkingFish(getId(),
+                    getPosition(), getImages() , getActionPeriod(),
+                    getAnimationPeriod()
+                    );
+
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
+
+            world.addEntity(fish);
+            fish.scheduleActions(scheduler, world, imageStore);
+
+            return true;
+    }
+
+    private boolean nextToTsunami(WorldModel world)
+    {
+        Point pos = getPosition();
+        Point[] adjacent = new Point[] {new Point( pos.x + 1 , pos.y) , new Point(pos.x - 1 , pos.y) , new Point(pos.x , pos.y + 1) , new Point(pos.x , pos.y - 1)};
+        for (Point p : adjacent)
+        {
+                if (!(world.getOccupancyCell(p) == null) && (world.withinBounds(p)) && world.getOccupancyCell(p).getId().equals("tsunami"))
+                    return true;
+        }
+        return false;
+    }
 
 
 }
