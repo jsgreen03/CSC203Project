@@ -59,11 +59,7 @@ public class OreBlob extends AnimationEntity{
                 nextPeriod);
     }
 
-    public boolean moveTo(
-            Entity entity,
-            WorldModel world,
-            Entity target,
-            EventScheduler scheduler)
+    public boolean moveTo(Entity entity, WorldModel world, Entity target, EventScheduler scheduler)
     {
         if (this.getPosition().adjacent(target.getPosition())) {
             world.removeEntity( target);
@@ -87,7 +83,6 @@ public class OreBlob extends AnimationEntity{
 
     private Point nextPosition(WorldModel world, Point destPos){
         PathingStrategy pathstrat = new AStarPathingStrategy();
-        //PathingStrategy pathstrat = new SingleStepPathingStrategy();
 
         List<Point> pts = pathstrat.computePath(getPosition(), destPos, pt -> world.withinBounds(pt) && !world.isOccupied(pt), (pt1, pt2) -> withinReach(pt1, pt2), PathingStrategy.CARDINAL_NEIGHBORS);
 
@@ -109,8 +104,8 @@ public class OreBlob extends AnimationEntity{
     private boolean transform(WorldModel world, EventScheduler scheduler, ImageStore imageStore)
     {
 
-            WalkingFish fish = Factory.createWalkingFish(getId(),
-                    getPosition(), getImages() , getActionPeriod(),
+            WalkingFish fish = Factory.createWalkingFish("walkingfish",
+                    getPosition(), Functions.getImageList(imageStore , "walkingfish") , getActionPeriod(),
                     getAnimationPeriod()
                     );
 
@@ -126,11 +121,15 @@ public class OreBlob extends AnimationEntity{
     private boolean nextToTsunami(WorldModel world)
     {
         Point pos = getPosition();
+        System.out.println("Point:" + pos);
+        if (pos.equals(new Point(-1 , -1))) return true;
         Point[] adjacent = new Point[] {new Point( pos.x + 1 , pos.y) , new Point(pos.x - 1 , pos.y) , new Point(pos.x , pos.y + 1) , new Point(pos.x , pos.y - 1)};
         for (Point p : adjacent)
         {
+            System.out.println(p);
                 if (!(world.getOccupancyCell(p) == null) && (world.withinBounds(p)) && world.getOccupancyCell(p).getId().equals("tsunami"))
-                    return true;
+                {System.out.print("Found!");
+                    return true;}
         }
         return false;
     }

@@ -44,7 +44,7 @@ seal images/seal9.bmp 254 226 176 0
 seal images/seal10.bmp 254 226 176 0
 seal images/seal11.bmp 254 226 176 0
 seal images/seal12.bmp 254 226 176 0
-walkingfish images/walkingfish1.bmp 252 252 252 0
-walkingfish images/walkingfish2.bmp 252 252 252 0
-walkingfish images/walkingfish3.bmp 252 252 252 0
+walkingfish images/walkingfish1.bmp 255 255 255 0
+walkingfish images/walkingfish2.bmp 255 255 255 0
+walkingfish images/walkingfish3.bmp 255 255 255 0
 sand images/sand.bmp

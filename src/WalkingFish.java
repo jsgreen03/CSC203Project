@@ -74,7 +74,7 @@ public class WalkingFish extends AnimationEntity {
         {
             OreBlob oreBlob = Factory.createOreBlob(getId(),
                     getPosition() , getActionPeriod(),
-                    getAnimationPeriod() , getImages()
+                    getAnimationPeriod() , Functions.getImageList(imageStore , "seagull")
             );
 
             world.removeEntity(this);
@@ -92,6 +92,8 @@ public class WalkingFish extends AnimationEntity {
     private boolean nextToBlacksmith(WorldModel world)
     {
         Point pos = getPosition();
+        if (pos.equals(new Point(-1 , -1)))
+            return true;
         Point[] adjacent = new Point[] {new Point( pos.x + 1 , pos.y) , new Point(pos.x - 1 , pos.y) , new Point(pos.x , pos.y + 1) , new Point(pos.x , pos.y - 1)};
         for (Point p : adjacent)
         {
