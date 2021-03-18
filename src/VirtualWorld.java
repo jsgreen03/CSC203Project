@@ -200,12 +200,10 @@ public final class VirtualWorld extends PApplet
     }
 
     private void makeNewSeal(Point mouse) {
-        long nextPeriod = SEAL_ACTION_PERIOD;
 
         AnimationEntity soldier = Factory.createSeal("seal",mouse,imageStore.images.get("seal"), SEAL_ACTION_PERIOD, SEAL_ANIMATION_PERIOD);
 
         world.addEntity(soldier);
-        nextPeriod += SEAL_ACTION_PERIOD;
         soldier.scheduleActions(scheduler, world, imageStore);
     }
 }
