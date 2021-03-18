@@ -114,7 +114,7 @@ public final class VirtualWorld extends PApplet
     {
         ImageStore imst = new ImageStore(Functions.getImageList(imageStore , "tsunami").get(0));
         Background tsunami = new Background("tsunami" , imst.defaultImages);
-        Point[] square = new Point[] {new Point((mouseX / TILE_WIDTH ) + shiftX  , (mouseY / TILE_HEIGHT) + 2 + shiftY ) , new Point((mouseX / TILE_WIDTH) + shiftX , (mouseY / TILE_HEIGHT) - 2 + shiftY ) , new Point((mouseX / TILE_WIDTH) + 1 + shiftX , (mouseY / TILE_HEIGHT) + 1 + shiftY  ) , new Point((mouseX / TILE_WIDTH) + 1 + shiftX , (mouseY / TILE_HEIGHT) - 1 + shiftY)  , new Point((mouseX / TILE_WIDTH) - 1 + shiftX  , (mouseY / TILE_HEIGHT) + 1 + shiftY  ) , new Point((mouseX / TILE_WIDTH) - 1 + shiftX , (mouseY / TILE_HEIGHT) - 1 + shiftY ) , new Point((mouseX / TILE_WIDTH) + shiftX , (mouseY / TILE_HEIGHT) + 1 + shiftY )  , new Point((mouseX / TILE_WIDTH) + shiftX  , (mouseY / TILE_HEIGHT) - 1 + shiftY )};
+        Point[] square = new Point[] {new Point((mouseX / TILE_WIDTH ) + view.viewport.col  , (mouseY / TILE_HEIGHT) + 2 + view.viewport.row) , new Point((mouseX / TILE_WIDTH) + view.viewport.col , (mouseY / TILE_HEIGHT) - 2 + view.viewport.row ) , new Point((mouseX / TILE_WIDTH) + 1 + view.viewport.col , (mouseY / TILE_HEIGHT) + 1 + view.viewport.row  ) , new Point((mouseX / TILE_WIDTH) + 1 + view.viewport.col, (mouseY / TILE_HEIGHT) - 1 + view.viewport.row)  , new Point((mouseX / TILE_WIDTH) - 1 + view.viewport.col  , (mouseY / TILE_HEIGHT) + 1 + view.viewport.row) , new Point((mouseX / TILE_WIDTH) - 1 + view.viewport.col , (mouseY / TILE_HEIGHT) - 1 + view.viewport.row ) , new Point((mouseX / TILE_WIDTH) + view.viewport.col , (mouseY / TILE_HEIGHT) + 1 + view.viewport.row)  , new Point((mouseX / TILE_WIDTH) + view.viewport.col  , (mouseY / TILE_HEIGHT) - 1 + view.viewport.row)};
         for (Point p : square)
         {
             if (world.withinBounds(p))
@@ -123,7 +123,7 @@ public final class VirtualWorld extends PApplet
                 world.setOccupancyCell(p, new Obstacle("tsunami", p, null));
             }
         }
-        makeNewSeal(new Point((mouseX / TILE_WIDTH) + shiftX  , (mouseY / TILE_HEIGHT) + shiftY ));
+        makeNewSeal(new Point((mouseX / TILE_WIDTH) + view.viewport.col  , (mouseY / TILE_HEIGHT) + view.viewport.row ));
     }
 
 

@@ -78,6 +78,6 @@ public class Factory {
     }
 
     public static WalkingFish createWalkingFish(String id , Point position , List<PImage> images , int actionPeriod , int animationPeriod)
-    {return new WalkingFish(id , position , images , actionPeriod , animationPeriod);}
+    {return new WalkingFish(id , position , images , 1 , animationPeriod);}
 
 }

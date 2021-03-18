@@ -121,15 +121,14 @@ public class OreBlob extends AnimationEntity{
     private boolean nextToTsunami(WorldModel world)
     {
         Point pos = getPosition();
-        System.out.println("Point:" + pos);
         if (pos.equals(new Point(-1 , -1))) return true;
         Point[] adjacent = new Point[] {new Point( pos.x + 1 , pos.y) , new Point(pos.x - 1 , pos.y) , new Point(pos.x , pos.y + 1) , new Point(pos.x , pos.y - 1)};
         for (Point p : adjacent)
         {
-            System.out.println(p);
-                if (!(world.getOccupancyCell(p) == null) && (world.withinBounds(p)) && world.getOccupancyCell(p).getId().equals("tsunami"))
-                {System.out.print("Found!");
-                    return true;}
+                if ((world.withinBounds(p)) && !(world.getOccupancyCell(p) == null) && world.getOccupancyCell(p).getId().equals("tsunami"))
+                {
+                    return true;
+                }
         }
         return false;
     }
