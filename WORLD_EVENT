@@ -1,11 +1,11 @@
 1. The event is triggered by a mouse click.
 2. When the event is triggered, eight tsunami waves should appear which are seen as obstacles by the entities.
-   In the middle of the tsunmai waves, we created a sand "path" for a new entity to walk through. This new entity
+   In the middle of the tsunmai waves, we created a sand "path" for the new entity to walk through. This new entity
    that appears after a mouse click is the seal which moves towards seaweed and destroys it.
 3. As well as that, when the mouse is clicked and the tsunami waves appear, if a seagull goes next to the event,
    (next to a tsunmai wave) they will transform into a walking fish which drops seaweed until it reaches a sandcastle,
    where it transforms back into a seagull.
-4. The new entity is a seal. It moves towards the closest seaweed and destroys it.
+4. The new entity is a seal. It animates and moves towards the closest seaweed and destroys it.
 5. The project was created by Amber Fry and Jaxon Green. Amber and Jaxon both worked on deciding a theme,finding the
    images, and converting them to gifs/bmp files together. Amber worked on creating the world event new entity,
    updating imagelist/ changing the images for the world to the new theme(background, new entities, old entities),
