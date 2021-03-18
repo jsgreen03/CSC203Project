@@ -97,8 +97,10 @@ public class WalkingFish extends AnimationEntity {
         Point[] adjacent = new Point[] {new Point( pos.x + 1 , pos.y) , new Point(pos.x - 1 , pos.y) , new Point(pos.x , pos.y + 1) , new Point(pos.x , pos.y - 1)};
         for (Point p : adjacent)
         {
+            if (world.withinBounds(p)) {
             if (!(world.getOccupancyCell(p) == null) && world.getOccupancyCell(p).getClass().equals(Blacksmith.class))
                 return true;
+        }
         }
         return false;
     }
