@@ -33,8 +33,8 @@ public final class VirtualWorld extends PApplet
     public static final double FASTER_SCALE = 0.25;
     public static final double FASTEST_SCALE = 0.10;
 
-    private static final int SEAL_ACTION_PERIOD = 2;
-    private static final int SEAL_ANIMATION_PERIOD = 2;
+    private static final int SEAL_ACTION_PERIOD = 2000;
+    private static final int SEAL_ANIMATION_PERIOD = 100;
 
     public static double timeScale = 1.0;
 
@@ -58,11 +58,11 @@ public final class VirtualWorld extends PApplet
     public void setup() {
         this.imageStore = new ImageStore(
                 createImageColored(TILE_WIDTH, TILE_HEIGHT,
-                                   DEFAULT_IMAGE_COLOR));
+                        DEFAULT_IMAGE_COLOR));
         this.world = new WorldModel(WORLD_ROWS, WORLD_COLS,
-                                    createDefaultBackground(imageStore));
+                createDefaultBackground(imageStore));
         this.view = new WorldView(VIEW_ROWS, VIEW_COLS, this, world, TILE_WIDTH,
-                                  TILE_HEIGHT);
+                TILE_HEIGHT);
         this.scheduler = new EventScheduler(timeScale);
 
         loadImages(IMAGE_LIST_FILE_NAME, imageStore, this);
@@ -130,8 +130,8 @@ public final class VirtualWorld extends PApplet
 
     public static Background createDefaultBackground(ImageStore imageStore) {
         return new Background(DEFAULT_IMAGE_NAME,
-                              Functions.getImageList(imageStore,
-                                                     DEFAULT_IMAGE_NAME));
+                Functions.getImageList(imageStore,
+                        DEFAULT_IMAGE_NAME));
     }
 
     public static PImage createImageColored(int width, int height, int color) {
