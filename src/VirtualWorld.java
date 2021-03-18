@@ -35,6 +35,9 @@ public final class VirtualWorld extends PApplet
 
     public static double timeScale = 1.0;
 
+    private int shiftX = 0;
+    private int shiftY = 0;
+
     public ImageStore imageStore;
     public WorldModel world;
     public WorldView view;
@@ -85,15 +88,19 @@ public final class VirtualWorld extends PApplet
             switch (keyCode) {
                 case UP:
                     dy = -1;
+                    shiftY -= 1;
                     break;
                 case DOWN:
                     dy = 1;
+                    shiftY += 1;
                     break;
                 case LEFT:
                     dx = -1;
+                    shiftX -= 1;
                     break;
                 case RIGHT:
                     dx = 1;
+                    shiftX += 1;
                     break;
             }
             this.view.shiftView( dx, dy);
@@ -104,7 +111,15 @@ public final class VirtualWorld extends PApplet
     {
         ImageStore imst = new ImageStore(Functions.getImageList(imageStore , "tsunami").get(0));
         Background tsunami = new Background("tsunami" , imst.defaultImages);
-        world.setBackground(new Point(mouseX / TILE_WIDTH , mouseY / TILE_HEIGHT) , tsunami);
+        Point[] square = new Point[] {new Point((mouseX / TILE_WIDTH) + shiftX  , (mouseY / TILE_HEIGHT) + shiftY ) , new Point((mouseX / TILE_WIDTH ) + 1 + shiftX  , (mouseY / TILE_HEIGHT) + shiftY ) , new Point((mouseX / TILE_WIDTH) - 1 + shiftX , (mouseY / TILE_HEIGHT) + shiftY ) , new Point((mouseX / TILE_WIDTH) + 1 + shiftX , (mouseY / TILE_HEIGHT) + 1 + shiftY  ) , new Point((mouseX / TILE_WIDTH) + 1 + shiftX , (mouseY / TILE_HEIGHT) - 1 + shiftY)  , new Point((mouseX / TILE_WIDTH) - 1 + shiftX  , (mouseY / TILE_HEIGHT) + 1 + shiftY  ) , new Point((mouseX / TILE_WIDTH) - 1 + shiftX , (mouseY / TILE_HEIGHT) - 1 + shiftY ) , new Point((mouseX / TILE_WIDTH) + shiftX , (mouseY / TILE_HEIGHT) + 1 + shiftY )  , new Point((mouseX / TILE_WIDTH) + shiftX  , (mouseY / TILE_HEIGHT) - 1 + shiftY )};
+        for (Point p : square)
+        {
+            if (world.withinBounds(p))
+            {
+                world.setBackground(p, tsunami);
+                world.setOccupancyCell(p, new Obstacle("tsunami: " + p.toString(), p, null));
+            }
+        }
     }
 
 
